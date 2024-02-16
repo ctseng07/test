@@ -7,5 +7,4 @@ export default defineConfig({
   integrations: [tailwind()],
   site: "https://ctseng07.github.io",
   base: "/test",
-
 });
