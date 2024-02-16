@@ -1,23 +1,23 @@
 ---
-interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
+import "flowbite";
+const { title, metaDescription } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={metaDescription} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image" href="./favicon.png" />
 		<script
-		is:inline
-		src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
-	  ></script>
+			is:inline
+			src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
+		></script>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
 		<title>{title}</title>
 	</head>
 	<body>
@@ -25,31 +25,43 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
+	@tailwind base;
+	@tailwind components;
+
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		--button: #FFB600;
+		--accent-color: #888888;
+		--accent-light: #999999;
+		--red: #DB1F00;
 	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	* {
+		margin: 0;
+	}
+
+	body {
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+		height: 100%;
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+    font-family: "Montserrat", "Lato", system-ui, sans-serif;
+    background: #fff;
+    background-size: 224px;
+    height: 100%;
+  }
+
+	@layer components {
+    .max-container {
+      max-width: 1192px;
+      margin: 0 auto;
+    }
+  }
 </style>
